@@ -20,7 +20,7 @@ html {
 .searchCriteria {
     background-color: #E4BCD3;
     border-radius: 0.75rem;
-    margin: 2rem 0rem 1.2rem 20rem;
+    margin: 2rem 0rem 1rem 20rem;
     width: 55rem;
     text-align: center;
     padding: 0.2rem;
@@ -45,19 +45,19 @@ width: 25rem;
 text-align: center;
 padding:0.5rem;
 border-radius: 0.5rem;
-margin-left: 5rem;
+margin-left: 8rem;
 
 }
 .buttons {
     display: flex;
-    
+    margin-left: 2rem;
 }
 .generate {
  padding: 0.5rem;
  border-radius: 0.5rem;
  background-color: #90F79A;
  width: 5rem;
- margin-right: 0.25rem;
+ margin-right: 0.2rem;
 }
 .stop {
     
