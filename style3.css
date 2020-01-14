@@ -18,67 +18,78 @@ html {
     position: relative;
 }
 .searchCriteria {
+    background-color: #E4BCD3;
+    border-radius: 0.75rem;
+    margin: 2rem 0rem 1.2rem 20rem;
+    width: 55rem;
+    text-align: center;
+    padding: 0.2rem;
+    
+}
+.hexaHeading {
+    color: #4C3D46;
     font-size: 2rem;
     font-weight: 700;
-    background-color: #E4BCD3;
-    border-radius: 5px;
-    margin-left: 300px;
-    margin-right: 50px;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    width: 50%;
-    text-align: center;
-    padding: 10px;
+    font-family: 'Times New Roman', Times, serif
     
 }
 .searchInput {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
-    margin: 10px;
+    margin: 1rem;
+    
 }
 .number {
-display: flex;    
-width: 400px;
+width: 25rem;
 text-align: center;
-padding: 10px;
-border-radius: 5px;
+padding:0.5rem;
+border-radius: 0.5rem;
+margin-left: 5rem;
+
+}
+.buttons {
+    display: flex;
+    
 }
 .generate {
- display: flex;   
- padding: 10px;
- border-radius: 5px;
+ padding: 0.5rem;
+ border-radius: 0.5rem;
  background-color: #90F79A;
+ width: 5rem;
+ margin-right: 0.25rem;
 }
 .stop {
-    display: flex;
-    padding: 10px;
-    border-radius: 5px;
+    
+    padding: 0.5rem;
+    border-radius: 0.5rem;
     background-color:#DD5E55;
-    margin-right: 10px;
-    width: 60px;
-    text-align: center;
+    width: 5rem;
+}
+.notes {
+    color: #4C3D46;
 }
 .divColors {
     display: flex;
     justify-content: space-around;
-    align-content: center;
-    border-radius: 5px;
-    margin-left: 300px;
-    margin-right: 50px;
-    width: 50%;
-    padding: 10px;
-    height: 100px;
+    align-items: center;
+    border-radius: 0.75rem;
+    width: 55rem;
+    padding: 0.2rem;
+    height: 6rem;
+    margin-left: 20rem;
+    color:  #4C3D46;
+    font-weight: 750;
+    
 }
+
 .copy {
-    display: flex;
-    justify-content: flex-end;
-    width: 80px;
-    height: 40px;
+    
+    width: 4rem;
+    height: 2rem;
     text-align: center;
-    padding: 10px;
-    border-radius: 7px;
+    padding: 0.2rem;
+    border-radius: 0.38rem;
 }
 .copy:hover
 {

@@ -69,7 +69,7 @@ const divCreate = () => {
     divColors.setAttribute('class','divColors')
     const copyButton = document.createElement('button')
     copyButton.setAttribute('class','copy')
-    copyButton.style.margin = '10px'
+   // copyButton.style.margin = '10px'
     copyButton.textContent= 'Copy'
     const hexaColorId = randomHexaId()
     divColors.append(hexaColorId)
