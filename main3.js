@@ -1,11 +1,11 @@
-/* Declaration of global variables*/
 const searchResultDiv = document.querySelector('#searchResult')
 const generate = document.querySelector('#generate')   
 const stop = document.querySelector('#stop') 
 let flag = ''
 let colorTimer = '' 
+let buttonClicked = 0
+let hover = ''
 
-/*Function to generate random hexacolor id*/ 
 const randomHexaId = () => {
     let hexaChar= '0123456789abcdef'
     let hexaLen = hexaChar.length
@@ -20,13 +20,22 @@ const randomHexaId = () => {
 }
 
 generate.addEventListener('click', function() {
-    generateColors()
+    clearInterval(hover)
+    clearInterval(homePageTimer) 
+    clearInterval(colorTimer)
+    buttonClicked = 0
+   const number = document.querySelector('#number') 
+   flag = number.value
+   generateColors()
+   colorTimer = setInterval(generateColors,2000)
+    
 })
-
 stop.addEventListener('click', function() {
-    stopTimer()
+    buttonClicked = 1
+    clearInterval(hover)
+    clearInterval(homePageTimer)   
+    clearInterval(colorTimer)
 })
-
 const copyHexaId = (id) => {
     let input = document.createElement('input')
     document.body.appendChild(input)
@@ -37,16 +46,11 @@ const copyHexaId = (id) => {
 
 }
 
-const stopTimer = () => {
-    clearInterval(homePageTimer)
-    clearInterval(colorTimer)
-}
-
-     const homePage = () => {
-     searchResultDiv.textContent = ''    
-    for (let i=0; i<5;i++) {
-        divCreate()
-    }
+const homePage = () => {
+   searchResultDiv.textContent = ''    
+   for (let i=0; i<5;i++) {
+       divCreate()
+   }
 }
 
 const errorMessage = () => {
@@ -55,8 +59,11 @@ const errorMessage = () => {
     let errorMessage = '*Enter a number greater than or equal to 5'
     divColors.textContent = errorMessage
     divColors.style.color = 'red'
+    divColors.style.marginLeft ='20rem'
     searchResultDiv.append(divColors)
+    
 }
+
 const divCreate = () => {
     const divColors = document.createElement('div')
     divColors.setAttribute('class','divColors')
@@ -71,56 +78,59 @@ const divCreate = () => {
     searchResultDiv.append(divColors)
     copyButton.addEventListener('click', function(event)
        {
-         let copiedText = divColors.textContent.replace('Copy','')
-         copyHexaId(copiedText)
+        clearInterval(hover)   
+        clearInterval(homePageTimer)   
+        clearInterval(colorTimer)
+        let copiedText = divColors.textContent.replace('Copy','')
+        copyHexaId(copiedText)
             
         })
-    copyButton.addEventListener('mouseover',() => {
-        let copiedText = divColors.textContent.replace('Copy','')
+
+    copyButton.addEventListener('mouseover', function(event)
+       { 
+
+            clearInterval(hover)   
+            clearInterval(homePageTimer)
+            clearInterval(colorTimer)
         
-    })
 
+        })  
     
-    /*copyButton.addEventListener('mouseout',() => {
-        colorTimer()
-        homePageTimer = setInterval(homePage,2000)
-    }) */ 
+    copyButton.addEventListener('mouseleave', function(event)
+        {   
+            if (buttonClicked == 0) {
+            if (flag.length==0) {
+                hover = setInterval(homePage,2000)
+               }
+               else {
+                hover = setInterval(generateColors,2000)    
+               }
+            }
+
+           
+           
+         })      
+
+        
 }
 
-const genColorTimer = () => {
-    colorTimer = setInterval (innerFunction,2000)
-}
 
-const innerFunction = () => {
-    const num = document.querySelector('#number')
-    if (num.value == flag) {
-        searchResultDiv.textContent = ''
-    for (let i=0; i<num.value;i++) {  
-        divCreate()  
-    }
-}
-}
+
+
+
 const generateColors = () => {
-    stopTimer()
-    const number = document.querySelector('#number')
-    flag = number.value
-    console.log('Type of flag is ',typeof(flag))
-    if (flag<5) {
-        searchResultDiv.textContent = ''
+    searchResultDiv.textContent = ''
+    if ((flag<5) || !flag.match(/^[0-9]/)) {
         errorMessage()
 }
 else {
-   
-    innerFunction()
     
-   genColorTimer()
-    
+    for (let i=0; i<flag;i++) {  
+        divCreate()  
+    }   
 }
 }
 
-
-
-
-  homePage()
+homePage()
 
 const homePageTimer = setInterval(homePage,2000)
